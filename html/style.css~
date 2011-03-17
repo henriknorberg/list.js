@@ -56,7 +56,7 @@ body
 {
 	display:none;
 	width:400px;
-	height:200px;
+	height:180px;
 	background:	url(heading.gif);
 	background-repeat:repeat-x repeat-y;
 	font-size:14px;

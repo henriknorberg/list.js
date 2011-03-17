@@ -2,15 +2,36 @@
 <html lang='en'>
 	<head>
 		<title>list.js</title>
+		<link rel='stylesheet' type='text/css' href='style.css' />
+		<script type='text/javascript' src='jquery.js'></script>
+		<script type='text/javascript' src='custom.js'></script>
 	</head>
 	<body>
 		<div id='header'>
-			<img src='heading.gif' />
+			<div id='headerText'>list.js</div>
 		</div>
-		<div id='controlbar'>
-		</div>
+		<ul id='toolbar'>
+			<li><button class='home'>Home</button></li>
+			<li><button class='add'>New list</button></li>
+		</ul>
 		<div id='lists'>
 			
+		</div>
+		<div align='center'>
+			<div id='newListForm'>
+				<form>
+					<h4 style='margin-top:15px;'>New list</h4>
+					<p>Enter name of your new list</p>
+					<input type='text' name='ListName' id='ListName' />
+					<p>Enter your columns here(seperate with comma):</p>
+					<input type='text' name='Columns' id='Columns' />
+					<br />
+					<span>
+						<button class='submit'>Create</button>
+						<button class='cancel'>Cancel</button>
+					</span>
+				</form>
+			</div>
 		</div>
 		<div id='content'>
 		</div>
