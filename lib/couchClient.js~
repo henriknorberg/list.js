@@ -82,8 +82,6 @@ var client = function(port, host,dbname)
 		});
 		req.end();
 	};
-	
-	
 };
 
 exports.Client = client;
