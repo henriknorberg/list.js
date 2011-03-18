@@ -1,0 +1,25 @@
+var http = require('http');
+
+exports['http magic'] = function(test)
+{
+	var options = {
+		host : this.host,
+		port : this.port,
+		path : '/' + dbname + '/_all_docs?include_docs=true',
+		method : 'GET',
+		accept: 'text/html'
+	};
+	http.request(options, function(res)
+	{
+		var data = '';
+		res.on('data', function(chunk)
+		{
+			data += chunk;
+		});
+		res.on('end', function()
+		{
+			console.log(data);
+		});
+	});
+	test.done();
+};

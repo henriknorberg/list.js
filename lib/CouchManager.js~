@@ -1,0 +1,21 @@
+var cc = require('./couchClient');
+
+var manager = function(port,host,dbname)
+{
+	this.couchClient = new cc.Client(port,host,dbname);
+	
+	this.GetDocuments = function(callback)
+	{
+		this.couchClient.GetAll(function(data)
+		{
+			var docs = [];
+			for(var i = 0; i < data.rows.length; i++)
+			{
+				docs[i] = data.rows[i].doc;
+			}
+			callback(docs);
+		});
+	};
+};
+
+exports.Manager = manager;

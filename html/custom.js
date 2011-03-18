@@ -10,8 +10,13 @@ $(document).ready(function()
 		var columns = $('#Columns').val();
 
 		var listname = $('#ListName').val();
+		
+		alert([columns, listname]);
 
-		$.post('/', [columns, listname]);
+		$.post('/NewList', [columns, listname], function(data)
+		{
+			$('#lists').html(data);
+		});
 		
 		$('#newListForm').hide('fast');
 		return false;
