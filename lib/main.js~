@@ -2,18 +2,24 @@ var express = require('express');
 var manager = require('./FileManager');
 var cm = require('./CouchManager');
 var re = require('./rendering');
+var cfgManager = require('./configurationManager');
 var fs = require('fs');
 
+//load documents from ../html
 var loader = new manager.DocumentLoader('../html');
 loader.Load();
 
-var cfg = fs.readFileSync('configure.json');
+cfgManager.ConfigManager.ReadConfig();
 
-cfg = JSON.parse(cfg);
+console.log(cfgManager);
+
+var cfg = cfgManager.ConfigManager.cfg;
 
 
-var client = new cm.Manager(cfg.couchDB.port,'localhost', 'listjs');
+//create couchdb interface
+var client = new cm.Manager(cfg.couchDB.port, cfg.couchDB.host, cfg.couchDB.dbname);
 
+//webserver
 var app = express.createServer();
 
 app.configure(function()
@@ -34,7 +40,6 @@ app.get('/', function(req, res)
 app.post('/NewList', function(req, res)
 {
 	console.log(req.body);
-	
 });
 
 app.get('/heading.gif', function(req, res)
