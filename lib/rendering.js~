@@ -20,12 +20,12 @@ function JsonToHtml(json, renderHtmlCallback)
 
 function RenderLists(lists)
 {
-	var html = "<ul>";
+	var html = "<ul style='list-style:none;'>";
 	
 	for(var i = 0; i < lists.length; i++)
 	{
-	
-		var elem = "<div class=''>" + lists[i] + "</div>";
+		var elem = "<li><button class=''>" + lists[i].toString() + "</button></li>";
+		html += elem;
 	}
 	
 	html += "</ul>";
@@ -34,3 +34,4 @@ function RenderLists(lists)
 }
 
 exports.JsonToHtml = JsonToHtml;
+exports.RenderLists = RenderLists;

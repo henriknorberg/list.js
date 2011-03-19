@@ -1,10 +1,5 @@
 $(document).ready(function()
 {
-	$('#toolbar button.add').click(page.NewList);
-	$('#toolbar button.home').click(function()
-	{
-		$.location.attr('href', '/');
-	});
 	$('#newListForm button.submit').click(function(event)
 	{		
 		var columns = $('#Columns').val();
@@ -25,9 +20,31 @@ $(document).ready(function()
 		return false;
 	});
 	
-	$('#newListForm button.cancel').click(function()
+	$('#newListForm button.close').click(function()
 	{
 		$('#newListForm').hide('fast');
+	});
+	
+	//Loading lists from server
+	$.get('/GetLists', {}, function(data)
+	{
+		var htmlStr = '<ul style="list-style:none;">';
+	
+		for(var i = 0; i < data.length; i++)
+		{
+			htmlStr += '<li>' + data[i] + '</li>';
+		}
+	
+		htmlStr += '</ul>';
+	
+		$('#lists').html(htmlStr);
+	});
+	
+	$('#listItem').click(function()
+	{
+		$('#ribbonContent').html('<button id="CreateList">Create list</button>');
+		$('#CreateList').click(page.NewList);
+		$('#ribbonContent').show('slow');
 	});
 });
 

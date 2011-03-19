@@ -8,18 +8,18 @@
 	</head>
 	<body>
 		<div id='header'>
-			<div id='headerText'>list.js</div>
+			<div id='ribbon'>
+				<button id='listItem'>Lists</button>
+			</div>
+			<div id='ribbonContent'>
+				
+			</div>
 		</div>
-		<ul id='toolbar'>
-			<li><button class='home'>Home</button></li>
-			<li><button class='add'>New list</button></li>
-		</ul>
 		<div id='lists'>
-			
 		</div>
 		<div align='center'>
 			<div id='newListForm'>
-				<form>
+				<form action='/' method='post'>
 					<h4 style='margin-top:15px;'>New list</h4>
 					<p>Enter name of your new list</p>
 					<input type='text' name='ListName' id='ListName' />
