@@ -11,8 +11,6 @@ loader.Load();
 
 cfgManager.ConfigManager.ReadConfig();
 
-console.log(cfgManager);
-
 var cfg = cfgManager.ConfigManager.cfg;
 
 
@@ -32,14 +30,22 @@ app.get('/', function(req, res)
 	var index = loader.Files['index.html'];
 	client.GetLists('lists', function(data)
 	{
-		console.log(data);
 		res.send(index.toString());
 	});
 });
 
 app.post('/NewList', function(req, res)
 {
-	console.log(req.body);
+	
+	var list = {
+		listname : req.body.listname,
+		schema : req.body.schema
+	};
+	
+	client.NewList(list, function()
+	{
+		res.redirect('/');
+	});
 });
 
 app.get('/heading.gif', function(req, res)

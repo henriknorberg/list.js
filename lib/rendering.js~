@@ -14,6 +14,23 @@ function JsonToHtml(json, renderHtmlCallback)
 		
 		html += renderHtmlCallback(row);
 	}
+	
+	return html;
+};
+
+function RenderLists(lists)
+{
+	var html = "<ul>";
+	
+	for(var i = 0; i < lists.length; i++)
+	{
+	
+		var elem = "<div class=''>" + lists[i] + "</div>";
+	}
+	
+	html += "</ul>";
+	
+	return html;
 }
 
 exports.JsonToHtml = JsonToHtml;

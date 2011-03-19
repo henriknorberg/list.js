@@ -4,6 +4,16 @@ var manager = function(port,host,dbname)
 {
 	this.couchClient = new cc.Client(port,host,dbname);
 	
+	this.NewList = function(list, callback)
+	{
+		list.type = 'list';
+		var json = JSON.stringify(list);
+		this.couchClient.Insert(json, function(data)
+		{
+			if(callback)callback();
+		});
+	};
+	
 	this.GetDocuments = function(callback)
 	{
 		this.couchClient.GetAll(function(data)
@@ -18,9 +28,9 @@ var manager = function(port,host,dbname)
 			callback(docs);
 		});
 	};
-	this.GetLists = function(callback)
+	this.GetLists = function(viewname, callback)
 	{
-		this.couchClient.GetAll(function(data)
+		this.couchClient.CallView(viewname, function(data)
 		{
 			data = JSON.parse(data);
 			var lists = [];

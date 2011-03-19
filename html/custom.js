@@ -11,9 +11,12 @@ $(document).ready(function()
 
 		var listname = $('#ListName').val();
 		
-		alert([columns, listname]);
+		var obj = {
+			schema : columns,
+			listname : listname
+		};
 
-		$.post('/NewList', [columns, listname], function(data)
+		$.post('/NewList', obj, function(data)
 		{
 			$('#lists').html(data);
 		});
