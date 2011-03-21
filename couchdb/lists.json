@@ -1,9 +1,12 @@
 {
-  "_id" : "_design/example",
+  "_id" : "_design/lists",
   "language" : "javascript",
   "views" : {
     "lists" : {
       "map" : "function(doc){ if(doc.type == 'list') emit(doc._id, doc._rev)}"
+    },
+    "listnames" : {
+    	"map" : "function(doc) { if(doc.type == 'list') emit(doc._id, doc);}"
     }
   }
 }

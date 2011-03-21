@@ -1,5 +1,6 @@
 @charset "utf-8";
 
+
 #header
 {
 	width:1024px;
@@ -8,7 +9,7 @@
 	background-repeat:repeat-x repeat-y;
 	color:white;
 	font-family:Arial,Helvetica;
-		-webkit-border-top-left-radius: 3px;
+	-webkit-border-top-left-radius: 3px;
 	-webkit-border-bottom-left-radius: 3px;
 	-webkit-border-top-right-radius: 3px;
 	-webkit-border-bottom-right-radius: 3px;
@@ -26,10 +27,22 @@
 	border-bottom-right-radius: 3px;
 }
 
+.columnHeader
+{
+	background:#BEBEBE;
+	color: white;
+	width:100;	
+}
+
+.listItem
+{
+	color:white;
+}
+
 #ribbon
 {
 	width:150px;
-	color:black;
+	color:white;
 	font-size:16px;
 	border:thin;
 	border-color:white;
@@ -37,7 +50,7 @@
 	background-repeat:repeat-x repeat-y;
 	border:url(back.gif);
 	border-width:1px;
-	
+	font-family:Courier;
 	
 	-webkit-border-top-left-radius: 3px;
 	-webkit-border-bottom-left-radius: 3px;
@@ -57,6 +70,13 @@
 	border-bottom-right-radius: 3px;	
 }
 
+#content
+{
+	width:874px;
+	margin-left:150px;
+	margin-top:-70px;
+}
+
 #ribbonContent
 {
 	background:url(back.gif);
@@ -72,7 +92,7 @@
 #CreateList
 {
 	height:70px;
-	width:50px;
+	width:60px;
 	border:black;
 	border-width:1px;
 }
@@ -86,21 +106,7 @@ body
 	width:1024px;
 }
 
-#toolbar
-{
-	font-size: 90%;
-	line-height: 16px; 
-	list-style: none;
-	margin: 0 0 .5em;
-	padding: 5px 5px 5px 3px;
-}
-
-#toolbar li
-{
-	display:inline;
-}
-
- button:hover { background-position: 2px -30px; color: #000; }
+button:hover { background-position: 2px -30px; color: #000; }
 button:active { background-position: 2px -62px; color: #000; }
 
 button
@@ -113,6 +119,11 @@ button
   	font-size: 95%;
 }
 
+button.ListButton
+{
+	
+}
+
 #toolbar button.add
 {
 }
@@ -120,9 +131,12 @@ button
 #lists
 {
 	list-style:none;
-	background-color:#DEDEDE;
+	background-color:#FCFCFC;
 	width:150px;
 	word-wrap:break-word;
+	display:inline;
+	color: #222;  
+	text-shadow: 0px 2px 3px #555;
 }
 
 #toolbar.submit{}
@@ -140,12 +154,11 @@ button
 	border:white;
 	margin-top:50px;
 	color:white;
+	z-index:2;
 	
 	border: 5px solid #E8E8E8;
 	-webkit-border-radius: 3px;
 	-moz-border-radius: 3px;
-
-
 	
 	-webkit-border-top-left-radius: 10px;
 	-webkit-border-bottom-left-radius: 10px;
