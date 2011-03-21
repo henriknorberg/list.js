@@ -1,3 +1,5 @@
+
+
 $(document).ready(function()
 {
 
@@ -18,6 +20,7 @@ $(document).ready(function()
 		});
 		
 		$('#newListForm').hide('fast');
+
 		return false;
 	});
 	
@@ -42,6 +45,7 @@ $(document).ready(function()
 		
 		$('button.ListButton').click(function(event)
 		{
+			//Get the list columns from the server
 			$.post('/Content',{Name : $(this).html()}, function(data)
 			{
 				var columns = data.split(',');
@@ -56,22 +60,70 @@ $(document).ready(function()
 		});
 	});
 	
-	$('.listItem').click(function()
+	$('.listOptions').click(function()
 	{
-		$('#ribbonContent').html('<button id="CreateList">Create list</button>');
-		$('#CreateList').click(page.NewList);
-		$('#ribbonContent').show('slow');
+		$('#')
 	});
-
+	ribbonControl.Setup();
 });
 
+
+	//				
+//					
+
+//Contains interaction logic for ribbon control
+var ribbonControl = new function()
+{
+	//anchor
+	this.ribbon = this;
+	
+	this.Setup = function()
+	{
+		//Create main menu items @ ribbon head
+		$('#ribbon').html('<button class="listItem">Lists</button><button class="listOptions">List options</buttons>');
+		$('.listItem').click(this.Controls.ListActions.ShowLists);
+	};
+	
+	//Handlers for several controls inside the ribbon
+	this.Controls = new function()
+	{
+		
+		this.ListActions = new function()
+		{	
+			//Shows 
+			this.ShowLists = function()
+			{
+				$('#ribbonContent').html('<button id="CreateList">Create list</button>');
+				$('#CreateList').click(page.NewList);
+				$('#ribbonContent').show('slow');
+			};
+			
+			this.ShowListActions = function()
+			{
+				$('#ribbonContent').html('<button id="ListOptions">Options</button>');
+				$('#ListOptions').click(function()
+				{
+					
+				});
+			}
+		};
+	};
+};
+	
 
 var page = new function()
 {
 	this.NewList = function()
 	{
 		$('#newListForm').show('slow');
+		this.SelectList();
 	};
+	
+	this.SelectList = function()
+	{
+		listSelected = true;
+	};
+	
+	this.ListSelected = false;
 };
-
 
