@@ -60,16 +60,8 @@ $(document).ready(function()
 		});
 	});
 	
-	$('.listOptions').click(function()
-	{
-		$('#')
-	});
 	ribbonControl.Setup();
-});
-
-
-	//				
-//					
+});				
 
 //Contains interaction logic for ribbon control
 var ribbonControl = new function()
@@ -82,11 +74,13 @@ var ribbonControl = new function()
 		//Create main menu items @ ribbon head
 		$('#ribbon').html('<button class="listItem">Lists</button><button class="listOptions">List options</buttons>');
 		$('.listItem').click(this.Controls.ListActions.ShowLists);
+		$('.listOptions').click(this.Controls.ListActions.ShowListActions);
 	};
 	
 	//Handlers for several controls inside the ribbon
 	this.Controls = new function()
 	{
+		var ctl = this;
 		
 		this.ListActions = new function()
 		{	
@@ -95,17 +89,20 @@ var ribbonControl = new function()
 			{
 				$('#ribbonContent').html('<button id="CreateList">Create list</button>');
 				$('#CreateList').click(page.NewList);
-				$('#ribbonContent').show('slow');
+				ctl.ShowChildren();
 			};
 			
 			this.ShowListActions = function()
 			{
 				$('#ribbonContent').html('<button id="ListOptions">Options</button>');
-				$('#ListOptions').click(function()
-				{
-					
-				});
-			}
+				
+				ctl.ShowChildren();
+			};
+		};
+		
+		this.ShowChildren = function()
+		{
+			$('#ribbonContent').show('slow');
 		};
 	};
 };
