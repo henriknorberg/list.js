@@ -36,14 +36,14 @@ app.get('/GetLists', function(req ,res)
 {
 	client.GetLists(function(data)
 	{
-		var lists = [];
-		for(var i = 0; i < data.length; i++)
-		{
-			lists[i] = data[i].listname;
-		}
-	
-		res.send(lists);
+		res.send(database);
 	});
+});
+
+app.get('/NewListItem', function(req, res)
+{
+	var listname = req.params.listname;
+	
 });
 
 app.post('/NewList', function(req, res)
@@ -91,12 +91,6 @@ app.get('/jquery-1.5.1.js', function(req, res)
 {
 	res.setHeader('Content-Type', 'text/javascript');
 	res.send(loader.Files['jquery-1.5.1.js']);
-});
-
-app.get('/jquery-ui-1.8.11.custom.min.js', function(req, res)
-{
-	res.setHeader('Content-Type', 'text/javascript');
-	res.send(loader.Files['jquery-ui-1.8.11.custom.min.js']);
 });
 
 app.listen(8080);

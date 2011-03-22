@@ -1,0 +1,13 @@
+What's list.js?
+-----------------
+List.js wants to offer a bit collaboration support, sharepoint does.
+Basically there are lists. Everything is stored in them. For speficic list types exist templates.
+The default environment offers basic support for creating lists, modify the columns, inserting items,
+deleting, and so on.
+
+Who does what?
+--------------
+There are two parts: the server and the client. The server runs in node.js environment, the client is just the browser.
+The server has a connection to the database: CouchDB. It provides api endpoints for list actions, ...
+
+

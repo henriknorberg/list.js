@@ -1,4 +1,4 @@
-
+var lists = [];
 
 $(document).ready(function()
 {
@@ -35,29 +35,43 @@ $(document).ready(function()
 	{
 		var htmlStr = '<ul style="list-style:none;">';
 	
+		data = eval(data);
+	
 		for(var i = 0; i < data.length; i++)
 		{
-			htmlStr += '<li><button class="ListButton">' + data[i] + '</button></li>';
+			htmlStr += '<li><button class="ListButton">' + data[i].listname + '</button></li>';
 		}
 	
 		htmlStr += '</ul>';
 	
 		$('#lists').html(htmlStr);
 		
+		lists = data;
+		
 		$('button.ListButton').click(function(event)
 		{
-			//Get the list columns from the server
-			$.post('/Content',{Name : $(this).html()}, function(data)
-			{
-				var columns = data.split(',');
+				var currentList = new Object();
+				
+				var selectedList = $(this).html();
+				
+				for(var i = 0; i < lists.length; i++)
+				{
+					if(lists[i].listname == selectedList)
+					{
+						currentList = lists[i];
+						console.log(currentList);
+						break;
+					}
+				}
 				
 				$('#content').empty();
 				
-				for(var i = 0; i < columns.length; i++)
+				
+				for(var i = 0; i < currentList.schema.length; i++)
 				{
-					$('#content').append('<span> ' + columns[i] + '</span>').addClass('columnHeader');
+					var col = currentList.schema[i];
+					$('#content').append('<span> ' + col + '</span>').addClass('columnHeader');
 				}
-			});
 		});
 	});
 	
@@ -103,7 +117,7 @@ var ribbonControl = new function()
 			};
 		};
 		
-		this.ShowChildren = function()
+		this.ShowChildren = function(staysOpen)
 		{
 			if(ctl.expanded)
 			{
@@ -119,7 +133,6 @@ var ribbonControl = new function()
 	};
 };
 	
-
 var page = new function()
 {
 	this.NewList = function()
