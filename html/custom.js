@@ -82,6 +82,8 @@ var ribbonControl = new function()
 	{
 		var ctl = this;
 		
+		this.expanded = false;
+		
 		this.ListActions = new function()
 		{	
 			//Shows 
@@ -102,7 +104,16 @@ var ribbonControl = new function()
 		
 		this.ShowChildren = function()
 		{
-			$('#ribbonContent').show('slow');
+			if(ctl.expanded)
+			{
+				$('#ribbonContent').hide('slow');
+				ctl.expanded = false;
+			}
+			else
+			{
+				$('#ribbonContent').show('slow');
+				ctl.expanded = true;
+			}
 		};
 	};
 };

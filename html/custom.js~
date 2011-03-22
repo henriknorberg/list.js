@@ -80,6 +80,9 @@ var ribbonControl = new function()
 	//Handlers for several controls inside the ribbon
 	this.Controls = new function()
 	{
+		var ctl = this;
+		
+		this.expanded = false;
 		
 		this.ListActions = new function()
 		{	
@@ -88,20 +91,29 @@ var ribbonControl = new function()
 			{
 				$('#ribbonContent').html('<button id="CreateList">Create list</button>');
 				$('#CreateList').click(page.NewList);
-				this.ShowChildren();
+				ctl.ShowChildren();
 			};
 			
 			this.ShowListActions = function()
 			{
 				$('#ribbonContent').html('<button id="ListOptions">Options</button>');
 				
-				this.ShowChildren();
+				ctl.ShowChildren();
 			};
 		};
 		
 		this.ShowChildren = function()
 		{
-			$('#ribbonContent').show('slow');
+			if(expanded)
+			{
+				$('#ribbonContent').hide('slow');
+				expanded = false;
+			}
+			else
+			{
+				$('#ribbonContent').show('slow');
+				expanded = true;
+			}
 		};
 	};
 };
