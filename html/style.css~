@@ -38,11 +38,6 @@
 	width:100;	
 }
 
-.listItem
-{
-	color:white;
-}
-
 #ribbon
 {
 	width:150px;
@@ -128,10 +123,6 @@ button.ListButton
 	
 }
 
-#toolbar button.add
-{
-}
-
 #lists
 {
 	list-style:none;
@@ -147,7 +138,7 @@ button.ListButton
 #toolbar.submit{}
 #toolbar.cancel{}
 
-#newListForm
+#form.newListForm
 {
 	display:none;
 	position:fixed;
@@ -164,6 +155,16 @@ button.ListButton
 	color:white;
 	z-index:2;
 	
+
+}
+
+#newListForm button.submit
+{
+	
+}
+
+#form
+{
 	border: 5px solid #E8E8E8;
 	-webkit-border-radius: 3px;
 	-moz-border-radius: 3px;
@@ -184,9 +185,4 @@ button.ListButton
 	border-bottom-left-radius: 10px;
 	border-top-right-radius: 10px;
 	border-bottom-right-radius: 10px;	
-}
-
-#newListForm button.submit
-{
-	
 }

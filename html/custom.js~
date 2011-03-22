@@ -96,23 +96,23 @@ var ribbonControl = new function()
 			
 			this.ShowListActions = function()
 			{
-				$('#ribbonContent').html('<button id="ListOptions">Options</button>');
-				
+				$('#ribbonContent').html('<button id="AddItem">AddItem</button>');
+				$('#AddItem').click(page.AddItemToList);
 				ctl.ShowChildren();
 			};
 		};
 		
 		this.ShowChildren = function()
 		{
-			if(expanded)
+			if(ctl.expanded)
 			{
 				$('#ribbonContent').hide('slow');
-				expanded = false;
+				ctl.expanded = false;
 			}
 			else
 			{
 				$('#ribbonContent').show('slow');
-				expanded = true;
+				ctl.expanded = true;
 			}
 		};
 	};
@@ -125,6 +125,11 @@ var page = new function()
 	{
 		$('#newListForm').show('slow');
 		this.SelectList();
+	};
+	
+	this.AddItemToList = function()
+	{
+		
 	};
 	
 	this.SelectList = function()

@@ -17,7 +17,7 @@
 			</div>
 			<div id='lists'>
 			</div>
-			<div id='newListForm'>
+			<div class='newListForm'>
 				<form action='/' method='post'>
 					<h4 style='margin-top:15px;'>New list</h4>
 					<p>Enter name of your new list</p>

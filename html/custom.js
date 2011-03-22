@@ -27,6 +27,7 @@ $(document).ready(function()
 	$('#newListForm button.close').click(function()
 	{
 		$('#newListForm').hide('fast');
+		return false;
 	});
 	
 	//Loading lists from server
@@ -96,8 +97,8 @@ var ribbonControl = new function()
 			
 			this.ShowListActions = function()
 			{
-				$('#ribbonContent').html('<button id="ListOptions">Options</button>');
-				
+				$('#ribbonContent').html('<button id="AddItem">AddItem</button>');
+				$('#AddItem').click(page.AddItemToList);
 				ctl.ShowChildren();
 			};
 		};
@@ -125,6 +126,11 @@ var page = new function()
 	{
 		$('#newListForm').show('slow');
 		this.SelectList();
+	};
+	
+	this.AddItemToList = function()
+	{
+		
 	};
 	
 	this.SelectList = function()
